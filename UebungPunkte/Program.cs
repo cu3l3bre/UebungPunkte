@@ -71,7 +71,86 @@ namespace UebungPunkte
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Uebung zu Klassen mit Punkten");
+
+            List<PunktXY> punkte = new List<PunktXY>(); 
+
+            PunktXY p1 = new PunktXY(1.0, 1.0);
+            PunktXY p2 = new PunktXY(1.0, 5.0);
+            PunktXY p3 = new PunktXY();
+            PunktXY p4 = new PunktXY(2.0, 2.0);
+
+            PunktXY p5 = new PunktXY(3.0, 0.0);
+            PunktXY p6 = new PunktXY(0.0, 11.0);
+            PunktXY p7 = new PunktXY(2.0, 2.0);
+
+            //Console.WriteLine("p1(" + p1.X + "," + p1.Y + ")");
+            p1.print();
+            p2.print();
+            p3.print();
+
+            p3.set(10.0, 1.0);
+            p3.print();
+
+
+            Console.WriteLine(p1.AbstandZuPunkt(p2));
+
+            Console.WriteLine(PunktXY.AbstandZuPunkt(p1, p2));
+
+
+            Console.WriteLine(p1.AbstandZuPunkt(p3));
+            Console.WriteLine(p1.AbstandZuPunkt(p4));
+
+            Console.WriteLine(p5.AbstandZuNullPunkt());
+            Console.WriteLine(p6.AbstandZuNullPunkt());
+            Console.WriteLine(p7.AbstandZuNullPunkt());
+
+
+            PunktXYZ p1_3D = new PunktXYZ(1.0, 0.0, 0.0);
+            PunktXYZ p2_3D = new PunktXYZ(0.0, 1.0, 0.0);
+            PunktXYZ p3_3D = new PunktXYZ(0.0, 0.0, 1.0);
+            PunktXYZ p4_3D = new PunktXYZ(1.0, 1.0, 1.0);
+            PunktXYZ p5_3D = new PunktXYZ(2.0, 2.0, 2.0);
+
+            Console.WriteLine();
+            Console.WriteLine(p1_3D.AbstandZuNullPunkt());
+            Console.WriteLine(p2_3D.AbstandZuNullPunkt());
+            Console.WriteLine(p3_3D.AbstandZuNullPunkt());
+            Console.WriteLine(p4_3D.AbstandZuNullPunkt());
+
+            Console.WriteLine(p4_3D.AbstandZuPunkt(p5_3D));
+
+            //Console.WriteLine(p4_3D.AbstandZuPunkt(p5));
+
+            Console.WriteLine(PunktXYZ.AbstandZuPunkt(p5_3D , p4_3D));
+
+
+            punkte.Add(p1);
+            punkte.Add(p2);
+            punkte.Add(p3);
+            punkte.Add(p4);
+            punkte.Add(p5);
+            punkte.Add(p6);
+            punkte.Add(p7);
+
+            punkte.Add(p1_3D);
+            punkte.Add(p2_3D);
+            punkte.Add(p3_3D);
+            punkte.Add(p4_3D);
+            punkte.Add(p5_3D);
+
+            Console.WriteLine();
+
+            foreach (PunktXY p in punkte)
+            {
+                Console.Write(p.GetType() + "\t");
+                p.print();
+            }
+
+
+
+
+            Console.ReadKey();
         }
     }
 }
