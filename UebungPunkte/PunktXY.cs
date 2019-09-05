@@ -7,8 +7,8 @@ namespace UebungPunkte
 {
     public class PunktXY
     {
-        protected double x;
-        protected double y;
+        private double x;
+        private double y;
 
         public PunktXY()
         {
@@ -16,40 +16,54 @@ namespace UebungPunkte
             this.y = 0.0;
         }
 
-        public PunktXY(double x, double y)
+        public PunktXY(double x, double y) : this() // Aufruf des Std Konstruktos das die werte erstmal 0 sind
         {
             set(x, y);
-
-            //this.x = x;
-            //this.y = y;
         }
 
         // Getter , Setter
         public double X
         {
             get { return this.x; }
-            set { this.x = value;  }
+            set
+            {
+                if (value >= 0)
+                {
+                    this.x = value;
+                }
+            }
         }
 
         public double Y
         {
             get { return this.y; }
-            set { this.y = value; }
+            set
+            {
+                if (value >= 0)
+                {
+                    this.y = value;
+                }
+            }
         }
 
         // Setzen der Werte für einen Punkt
-        public void set(double x, double y)
+        public bool set(double x, double y)
         {
             if (x >= 0 && y >= 0)
             {
                 this.x = x;
                 this.y = y;
+                return true;
             }
+            /*
             else
             {
                 this.x = 0.0;
                 this.y = 0.0;
+                return false;
             }
+            */
+            return false;
         }
         
         public virtual void print()
@@ -59,8 +73,19 @@ namespace UebungPunkte
 
 
 
-        public virtual double AbstandZuNullPunkt()
+
+        public virtual double AbstandZuNullPunktVirtual()
         {
+            //  distance(P0, P1) = sqrt((x0)² + (y0)²)
+            Console.WriteLine("PunktXY.AbstandZuNullPunktVirtual()");
+            double abstand = Math.Sqrt(Math.Pow((this.x), 2) + Math.Pow((this.y), 2));
+            return abstand;
+        }
+
+
+        public double AbstandZuNullPunkt()
+        {
+            Console.WriteLine("PunktXY.AbstandZuNullPunkt()");
             //  distance(P0, P1) = sqrt((x0)² + (y0)²)
             double abstand = Math.Sqrt(Math.Pow((this.x), 2) + Math.Pow((this.y), 2));
             return abstand;
